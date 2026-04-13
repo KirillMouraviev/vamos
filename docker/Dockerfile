@@ -54,7 +54,7 @@ RUN mkdir -p $ROS_WS/src
 
 # Clone VAMOS repository (if needed) or mount as volume
 # For building the image, we'll clone it; for runtime, mount your local copy
-RUN git clone https://github.com/vamos-vla/vamos.git /tmp/vamos && \
+RUN git clone https://github.com/kirillMouraviev/vamos.git /tmp/vamos && \
     cp -r /tmp/vamos/vamos_ws/src/* $ROS_WS/src/ 2>/dev/null || true && \
     cp /tmp/vamos/environment.yml /tmp/ && \
     cp /tmp/vamos/environment_ros.yml /tmp/ && \
