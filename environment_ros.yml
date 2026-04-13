@@ -14,6 +14,11 @@ dependencies:
 
   # ROS core stack
   - ros-noetic-desktop
+  - ros-noetic-grid-map-msgs
+  - ros-noetic-grid-map-core  
+  - ros-noetic-grid-map-ros
+  - ros-noetic-grid-map-cv
+  - ros-noetic-grid-map-filters
 
   # build / workspace tooling
   - catkin_tools
