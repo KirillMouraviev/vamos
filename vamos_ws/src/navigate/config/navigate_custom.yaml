@@ -1,9 +1,9 @@
-image_topic: "image"
-depth_topic: "image"
-depth_camera_info_topic: "image"
-goal_topic: image"
-robot_frame: "image"
-global_frame: "image"
+image_topic: "/camera_forward/color/image_raw"
+depth_topic: "/camera_forward/aligned_depth_to_color/image_raw"
+depth_camera_info_topic: "/camera_forward/aligned_depth_to_color/camera_info"
+goal_topic: "/move_base_simple/goal"
+robot_frame: "base_link"
+global_frame: "odom"
 predictor_type: "vlm" # Different types only for testing
 time_threshold: 60 # Time in seconds before the VLM times out and replans
 debug_subscribers: false # Set true to debug topic subscribers
