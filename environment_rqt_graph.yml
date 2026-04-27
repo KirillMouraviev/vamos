@@ -1,0 +1,17 @@
+name: rqt_graph
+channels:
+  - robostack-noetic
+  - conda-forge
+  - pytorch
+  - defaults
+  - nodefaults
+
+variables:
+  CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+
+dependencies:
+  - python=3.8
+
+  # ROS core stack
+  - ros-noetic-desktop
+  - ros-noetic-rqt-graph

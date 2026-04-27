@@ -1,0 +1,19 @@
+# Input topics
+image_topic: /camera_forward/color/image_raw  # /zed2/zed_node/left/image_rect_color_throttle
+image_camera_info: /camera_forward/color/camera_info
+depth_topic: /camera_forward/aligned_depth_to_color/image_raw  # /zed2/zed_node/depth/depth_registered_throttle
+depth_camera_info: /camera_forward/aligned_depth_to_color/camera_info
+goal_topic: /move_base_simple/goal
+odom_topic: /odom
+vlm_path_2d_topic: /vamos/path_2d
+
+
+# Output topics
+cmd_vel_topic: /cmd_vel
+goal_2d: /vamos/goal_2d
+vlm_input_image: /vamos/input_image
+
+# Navigation parameters
+waypoint_distance_threshold: 0.5
+rotation_speed: 0.5
+visualization_enabled: true
