@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y \
     libboost-all-dev \
     libyaml-cpp-dev \
     libopencv-dev \
+    nano \
     python3-dev \
     python3-pip \
     python3-venv \
@@ -38,6 +39,7 @@ RUN apt-get update && apt-get install -y \
     python3-rosinstall \
     python3-rosinstall-generator \
     python3-wstool \
+    tmux \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Miniconda (lightweight Anaconda alternative)
@@ -58,6 +60,7 @@ RUN git clone https://github.com/kirillMouraviev/vamos.git /tmp/vamos && \
     cp -r /tmp/vamos/vamos_ws/src/* $ROS_WS/src/ 2>/dev/null || true && \
     cp /tmp/vamos/environment.yml /tmp/ && \
     cp /tmp/vamos/environment_ros.yml /tmp/ && \
+    cp /tmp/vamos/environment_rqt_graph.yml /tmp/ && \
     rm -rf /tmp/vamos
 
 # Create the conda environment
@@ -65,6 +68,7 @@ RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkg
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 RUN conda env create -f /tmp/environment_ros.yml && \
     conda clean -afy
+
 
 # Activate environment in all shells
 RUN echo "conda activate vamos" >> ~/.bashrc
@@ -86,7 +90,8 @@ RUN source /opt/conda/etc/profile.d/conda.sh && \
 # Set up environment variables for ROS
 RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate vamos" >> ~/.bashrc && \
-    echo "source $ROS_WS/devel/setup.bash" >> ~/.bashrc
+    echo "source $ROS_WS/devel/setup.bash" >> ~/.bashrc && \
+    echo "bash $ROS_WS/setup.sh" >> ~/.bashrc
 
 # Set entrypoint to source environment automatically
 COPY entrypoint.sh /entrypoint.sh

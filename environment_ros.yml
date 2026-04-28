@@ -18,6 +18,7 @@ dependencies:
   - ros-noetic-grid-map-core  
   - ros-noetic-grid-map-ros
   - ros-noetic-grid-map-cv
+  - ros-noetic-image-transport-plugins
 
   # build / workspace tooling
   - catkin_tools
