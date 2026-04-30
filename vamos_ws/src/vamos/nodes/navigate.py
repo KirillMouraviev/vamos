@@ -289,11 +289,13 @@ class VLMNavigationNode:
                 rospy.Time(0),
                 rospy.Duration(0.5)
             )
+            # print(transform)
             
             # Transform the goal pose
             goal_in_camera = tf2_geometry_msgs.do_transform_pose(
                 self.current_goal, transform
             )
+            print('Goal in camera:', goal_in_camera.pose.position)
             
             return goal_in_camera.pose.position
             

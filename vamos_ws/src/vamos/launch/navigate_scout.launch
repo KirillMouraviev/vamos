@@ -4,4 +4,18 @@
     <rosparam command="load" file="$(find vamos)/config/navigate_scout.yaml" />
     <!-- All parameters are loaded from the YAML file -->
   </node>
+
+  <!-- Decompress images from rosbag -->
+  <node name="decompress_forward_image" pkg="image_transport" type="republish" args="compressed in:=/camera_forward/color/image_raw raw out:=/camera_forward/color/image_raw"/>
+  <node name="decompress_bottom_image" pkg="image_transport" type="republish" args="compressed in:=/camera_bottom/color/image_raw raw out:=/camera_bottom/color/image_raw"/>
+
+  <!-- Static transforms to reverse base_link -->
+  <node name="tf_reverse_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 1 base_link base_link_forward 100"/>
+  <node name="tf_base_to_camera_bottom" pkg="tf" type="static_transform_publisher" args="0.5 0.0 0.67 0.0 0.3827 0.0 0.9239 base_link_forward camera_bottom_base_link 100"/>
+  <node name="tf_bottom_camera_1" pkg="tf" type="static_transform_publisher" args="0.0 -0.059 0.0 0.0012 -0.0004 0.0025 1.0 camera_bottom_base_link camera_bottom_color_frame 100"/>
+  <node name="tf_bottom_camera_2" pkg="tf" type="static_transform_publisher" args="0 0 0 -0.5 0.5 -0.5 0.5 camera_bottom_color_frame camera_bottom_color_optical_frame 100"/>
+  <node name="tf_base_to_camera_forward" pkg="tf" type="static_transform_publisher" args="0.5 0.0 0.55 0 0 0 1 base_link_forward camera_forward_base_link 100"/>
+  <node name="tf_forward_camera_1" pkg="tf" type="static_transform_publisher" args="0.0 -0.059 0.0 0.0013 -0.0025 0.0014 1.0 camera_forward_base_link camera_forward_color_frame 100"/>
+  <node name="tf_forward_camera_2" pkg="tf" type="static_transform_publisher" args="0 0 0 -0.5 0.5 -0.5 0.5 camera_forward_color_frame camera_forward_color_optical_frame 100"/>
+  <node name="tf_base_to_lidar" pkg="tf" type="static_transform_publisher" args="0.3 0.0 0.8 0 0 0 1 base_link_forward velodyne_link 100"/>
 </launch>

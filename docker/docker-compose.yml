@@ -17,7 +17,7 @@ services:
       # Mount your local VAMOS repository
       - ../:/root/vamos
       # Data directory
-      - ../../bags:/bags
+      - /mnt/hdd2/UpGreatEarth/bags:/bags
       # X11 for GUI
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     network_mode: host
